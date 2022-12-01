@@ -7,12 +7,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graph.h"
+#include "graphmatrix.h"
 #include <vector>
 #include <bits/stdc++.h>
 using namespace std;
 
 ofstream myfile; //allows to write to the output file
 Graph graph;
+GraphMatrix matrixgraph;
 
 bool fileOpen(string file, ifstream &fileObj) //opens the desired file
 {
@@ -40,9 +42,11 @@ void readFile(string file, ifstream &fileObj, string output) //reads in the inpu
         getline(ss, edgeD, ' ');
         if (edgeD==""){
             graph = Graph(stoi(edgeS));
+            matrixgraph = GraphMatrix(stoi(edgeS));
         }
         else{
             graph.addEdge(stoi(edgeS),stoi(edgeD));
+            matrixgraph.addEdge(stoi(edgeS),stoi(edgeD));
         }
     }
 }
@@ -50,17 +54,17 @@ void readFile(string file, ifstream &fileObj, string output) //reads in the inpu
 int main(int argc, char *argv[])
 {
 
-    /*Graph graph = Graph(5);
-    graph.addEdge(0, 3);
-    graph.addEdge(0, 2);
-    graph.addEdge(0, 1);
-    graph.addEdge(1, 2);
-    graph.addEdge(2, 4);
-    graph.printGraph();
-    cout << "\ndfs\n";
-    graph.DFS(0);
-    graph.BFS(0); */
-
+    GraphMatrix matrixgraph = GraphMatrix(5);
+    matrixgraph.addEdge(0, 3);
+    matrixgraph.addEdge(0, 2);
+    matrixgraph.addEdge(0, 1);
+    matrixgraph.addEdge(1, 2);
+    matrixgraph.addEdge(2, 4);
+    matrixgraph.printGraph();
+    matrixgraph.callDFS(0, 4);
+    //graph.DFS(0);
+    //graph.BFS(0);
+    
     ifstream fin;
     char commands;
     string input = "default";
@@ -73,6 +77,5 @@ int main(int argc, char *argv[])
         readFile(input, fin, output); //reads in input file
         fin.close(); //closes input file
     }
-    graph.DFS(0);
-    graph.BFS(0);
+    
 }
