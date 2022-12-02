@@ -1,0 +1,1 @@
+Our program is run by running make, then typing ./program4 <input-file> <output-file>

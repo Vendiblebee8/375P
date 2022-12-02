@@ -80,16 +80,27 @@ void GraphMatrix::DFS(int v) {
 }
 
 void GraphMatrix::printDFS() {
-    list<int> result;
+    vector<int> result;
     int curVertex = endVertex;
     
     while (curVertex != -1) {
-        result.push_front(nodeNames[curVertex]);
+        result.push_back(nodeNames[curVertex]);
         curVertex = previousNodes[curVertex];
     }
+    
+    for (int i = result.size() - 1; i >= 0; i--) {
+        if (i == 0) {
+            cout << result[i];
+        }
+        else {
+            cout << result[i] << " -> ";
+        }
+    }
 
+    /*
     for (int x : result) {
         cout << x << " -> ";
     }
+    */
     cout << "\n";
 }
