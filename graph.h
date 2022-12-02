@@ -7,6 +7,8 @@
 #include <fstream>
 #include <stdio.h>
 #include <vector>
+#include <chrono>
+using namespace std::chrono;
 using namespace std;
 
 //  Graph Class - Implementation of graph data structure with built in algorithms
@@ -19,6 +21,7 @@ class Graph {
         void printGraph();
         void DFS(int v);
         void BFS(int v);
+        void callDFS(int start, int end);
 
     private:
         int numVertices;

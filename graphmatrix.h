@@ -1,14 +1,14 @@
 #ifndef GRAPHMATRIX_H
 #define GRAPHMATRIX_H
 
-#include <list>
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
 #include <stdio.h>
 #include <vector>
-#include <list>
 #include <bits/stdc++.h>
+#include <chrono>
+using namespace std::chrono;
 using namespace std;
 
 //  Graph Class - Implementation of graph data structure with built in algorithms
@@ -22,6 +22,8 @@ class GraphMatrix {
         void callDFS(int start, int end);
         void DFS(int v);
         void printDFS();
+        void BFS(int v);
+        void callBFS(int start, int end);
 
     private:
         int numVertices;

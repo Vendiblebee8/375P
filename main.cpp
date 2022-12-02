@@ -33,28 +33,42 @@ bool fileOpen(string file, ifstream &fileObj) //opens the desired file
 void readFile(string file, ifstream &fileObj, string output) //reads in the input file and runs given commands
 {
     string line;
+    int globalStart;
+    int globalEnd;
+    string alg;
     while (getline(fileObj, line))
     {
         string edgeS = "";
         string edgeD = "";
+        alg = "";
         stringstream ss(line);
         getline(ss, edgeS, ' ');
         getline(ss, edgeD, ' ');
+        getline(ss, alg, ' ');
         if (edgeD==""){
             graph = Graph(stoi(edgeS));
             matrixgraph = GraphMatrix(stoi(edgeS));
+        }
+        else if (alg != "") {
+            globalStart = stoi(edgeS);
+            globalEnd = stoi(edgeD);
         }
         else{
             graph.addEdge(stoi(edgeS),stoi(edgeD));
             matrixgraph.addEdge(stoi(edgeS),stoi(edgeD));
         }
     }
+    cout << "Start node" << globalStart << ", End node " << globalEnd << "\n \n";
+    cout << "Adjacency List:\n";
+    graph.callDFS(0, 0);            //  still need to fix callDFS
+    cout << "Adjacency Matrix:\n";
+    matrixgraph.callDFS(0, 44);
 }
 
 int main(int argc, char *argv[])
 {
 
-    GraphMatrix matrixgraph = GraphMatrix(22);
+    //GraphMatrix matrixgraph = GraphMatrix(10);
     
     //  doesnt work
     /*
@@ -64,15 +78,8 @@ int main(int argc, char *argv[])
     matrixgraph.addEdge(1, 2);
     matrixgraph.addEdge(2, 4);
     */
-
     //  works
     /*
-    matrixgraph.addEdge(0, 1);
-    matrixgraph.addEdge(1, 2);
-    matrixgraph.addEdge(4, 1);
-    matrixgraph.addEdge(2, 3);
-    matrixgraph.addEdge(4, 3);
-    */
     matrixgraph.addEdge(0, 5);
     matrixgraph.addEdge(0, 1);
     matrixgraph.addEdge(0, 2);
@@ -96,8 +103,9 @@ int main(int argc, char *argv[])
     matrixgraph.addEdge(19, 20);
     matrixgraph.addEdge(21, 20);
     matrixgraph.addEdge(10, 21);
-    matrixgraph.printGraph();
-    matrixgraph.callDFS(0, 21);
+    */
+    //matrixgraph.printGraph();
+    //matrixgraph.callDFS(0, 6);
     //graph.DFS(0);
     //graph.BFS(0);
     

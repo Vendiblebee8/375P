@@ -67,3 +67,11 @@ void Graph::BFS(int v){
     }
     cout<<endl;
 }
+
+void Graph::callDFS(int start, int end) {
+    auto chronoStart = high_resolution_clock::now();
+    DFS(start);     //  actually call the algorithm
+    auto chronoStop = high_resolution_clock::now();
+    duration<double> diff = (chronoStop - chronoStart);
+    cout << "DFS Runtime: " << diff.count() * 1000 << " seconds" << "\n";
+}

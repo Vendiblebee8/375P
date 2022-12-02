@@ -54,9 +54,13 @@ void GraphMatrix::printGraph() {
 }
 
 void GraphMatrix::callDFS(int start, int end) {
+    auto chronoStart = high_resolution_clock::now();   //  init runtime counter
     startVertex = start;
     endVertex = end;
     DFS(start);
+    auto chronoStop = high_resolution_clock::now();
+    duration<double> diff = (chronoStop - chronoStart);
+    cout << "DFS Runtime: " << diff.count() * 1000 << " seconds" << "\n";
     printDFS();
 }
 
@@ -103,4 +107,12 @@ void GraphMatrix::printDFS() {
     }
     */
     cout << "\n";
+}
+
+void GraphMatrix::BFS(int v) {
+    
+}
+
+void GraphMatrix::callBFS(int start, int end) {
+    
 }
