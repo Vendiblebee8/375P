@@ -58,13 +58,13 @@ void readFile(string file, ifstream &fileObj, string output) //reads in the inpu
             matrixgraph.addEdge(stoi(edgeS),stoi(edgeD));
         }
     }
-    cout << "Start node" << globalStart << ", End node " << globalEnd << "\n \n";
+    cout << "Start node " << globalStart << ", End node " << globalEnd << "\n \n";
     cout << "Adjacency List:\n";
     cout<<"BFS:\n";
     graph.callBFS(globalStart, globalEnd);
-    cout<<"DFS\n";
+    cout<<"DFS:\n";
     graph.callDFS(globalStart, globalEnd);
-    cout << "Adjacency Matrix:\n";
+    cout << "\nAdjacency Matrix:\n";
     cout << "DFS:\n";
     matrixgraph.callDFS(globalStart, globalEnd);
     cout << "BFS:\n";
