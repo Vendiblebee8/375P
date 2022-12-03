@@ -61,11 +61,15 @@ void readFile(string file, ifstream &fileObj, string output) //reads in the inpu
     cout << "Start node" << globalStart << ", End node " << globalEnd << "\n \n";
     cout << "Adjacency List:\n";
     cout<<"BFS:\n";
-    graph.callBFS(80,40);
+    graph.callBFS(globalStart, globalEnd);
     cout<<"DFS\n";
-    graph.callDFS(80,40);
+    graph.callDFS(globalStart, globalEnd);
     cout << "Adjacency Matrix:\n";
-    matrixgraph.callDFS(80, 40);
+    cout << "DFS:\n";
+    matrixgraph.callDFS(globalStart, globalEnd);
+    cout << "BFS:\n";
+    matrixgraph.callBFS(globalStart, globalEnd);
+
 }
 
 int main(int argc, char *argv[])

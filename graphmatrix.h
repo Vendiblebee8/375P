@@ -1,6 +1,7 @@
 #ifndef GRAPHMATRIX_H
 #define GRAPHMATRIX_H
 
+#include <list>
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
@@ -22,7 +23,8 @@ class GraphMatrix {
         void callDFS(int start, int end);
         void DFS(int v);
         void printDFS();
-        void BFS(int v);
+        void BFS();
+        void printBFS();
         void callBFS(int start, int end);
 
     private:
@@ -31,6 +33,7 @@ class GraphMatrix {
         bool **matrix;
         bool *visited;
         int *previousNodes;
+        int *distancesToSource;
         int startVertex = 0;
         int endVertex = 0;
         int curLength = 0;

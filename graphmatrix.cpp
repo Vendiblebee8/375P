@@ -36,6 +36,10 @@ GraphMatrix::GraphMatrix(int v) {
     for (int i = 0; i < v; i++) {
         nodeNames[i] = i;
     }
+    distancesToSource = new int[v];
+    for (int i = 0; i < v; i++) {
+        distancesToSource[i] = INT_MAX;
+    }
 
 }
 
@@ -109,10 +113,65 @@ void GraphMatrix::printDFS() {
     cout << "\n";
 }
 
-void GraphMatrix::BFS(int v) {
+void GraphMatrix::BFS() {
+    list<int> queue;
+    queue.push_back(startVertex);
+    visited[startVertex] = true;
+    bool finished = false;
+    //distancesToSource[startVertex] = 0;
     
+    while (!finished && !queue.empty()) {
+        int curNode = queue.front();
+        queue.pop_front();
+        int tempNeighbor;
+        int curNeighbor;
+
+        for (int i = 0; i < numVertices; i++) {
+            if (!visited[i] && matrix[curNode][i]) {
+                tempNeighbor = i;
+                break;
+            }
+        }
+
+        while ((curNeighbor == tempNeighbor) && curNeighbor != -1) {
+            visited[curNeighbor] = true;
+            queue.push_back(curNeighbor);
+            previousNodes[curNeighbor] = curNode;
+            if (curNeighbor == endVertex) {
+                finished = true;
+                break;
+            }
+        }
+    }
+}
+
+void GraphMatrix::printBFS() {
+    vector<int> result;
+    int curVertex = endVertex;
+    
+    while (curVertex != -1) {
+        result.push_back(nodeNames[curVertex]);
+        curVertex = previousNodes[curVertex];
+    }
+    
+    for (int i = result.size() - 1; i >= 0; i--) {
+        if (i == 0) {
+            cout << result[i];
+        }
+        else {
+            cout << result[i] << " -> ";
+        }
+    }
+    cout << "\n";
 }
 
 void GraphMatrix::callBFS(int start, int end) {
-    
+    auto chronoStart = high_resolution_clock::now();
+    startVertex = start;
+    endVertex = end;
+    BFS();
+    auto chronoStop = high_resolution_clock::now();
+    duration<double> diff = (chronoStop - chronoStart);
+    cout << "BFS Runtime: " << diff.count() * 1000 << " seconds" << "\n";
+    printBFS();
 }
