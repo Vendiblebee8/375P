@@ -146,5 +146,5 @@ void Graph::callBFS(int start, int end) {
     get_BFS_path(start, end);     //  actually call the algorithm
     auto chronoStop = high_resolution_clock::now();
     duration<double> diff = (chronoStop - chronoStart);
-    cout << "\nDFS Runtime: " << diff.count() * 1000 << " seconds" << "\n";
+    cout << "\nBFS Runtime: " << diff.count() * 1000 << " seconds" << "\n";
 }
