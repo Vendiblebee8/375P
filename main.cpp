@@ -60,9 +60,12 @@ void readFile(string file, ifstream &fileObj, string output) //reads in the inpu
     }
     cout << "Start node" << globalStart << ", End node " << globalEnd << "\n \n";
     cout << "Adjacency List:\n";
-    graph.callDFS(0, 0);            //  still need to fix callDFS
+    cout<<"BFS:\n";
+    graph.callBFS(80,40);
+    cout<<"DFS\n";
+    graph.callDFS(80,40);
     cout << "Adjacency Matrix:\n";
-    matrixgraph.callDFS(0, 44);
+    matrixgraph.callDFS(80, 40);
 }
 
 int main(int argc, char *argv[])

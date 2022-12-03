@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <vector>
 #include <chrono>
+#include <string>
+#include <queue>
 using namespace std::chrono;
 using namespace std;
 
@@ -19,14 +21,20 @@ class Graph {
         Graph(int v);
         void addEdge(int src, int dest);
         void printGraph();
-        void DFS(int v);
-        void BFS(int v);
+        bool BFS(int src, int dest, int parent[]);
+        void get_BFS_path(int src, int dest); 
+        // bool DFS(int src, int dest, int parent[]);
+        // void get_DFS_path(int src, int dest); 
+        void DFS(int v, int dest);
+        // void BFS(int v);
         void callDFS(int start, int end);
+        void callBFS(int start, int end);
 
     private:
         int numVertices;
-        list<int> *adjLists;
-        bool *visited;
+        vector<int> *adjList;
+        vector<bool> vis;
+        bool found = false;
 };
 
 #endif

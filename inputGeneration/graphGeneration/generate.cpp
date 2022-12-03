@@ -15,7 +15,7 @@ int main(){
     srand(2);
 
     //put probability from 1-100
-    int prob = 20;
+    int prob = 2;
     int n = 100;
 
     // for(int i=1; i<101; i++){
